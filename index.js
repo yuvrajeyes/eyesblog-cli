@@ -41,10 +41,26 @@ yargs
     },
 
     handler: function () {
-      const task = new Task({
-        Description: "Desc 2",
+      let task1 = new Task({
+          Description: "Desc 1",
+        }),
+        task2 = new Task({
+          Description: "Desc 2",
+          Completed: true,
+        }),
+        task3 = new Task({
+          Description: "Desc 3",
+          Completed: true,
+        }),
+        task4 = new Task({
+          Description: "Desc 4",
+        });
+
+      let task = new Task({
+        Description: yargs.argv.Description,
+        Completed: yargs.argv.Completed,
       });
-      
+
       Task.find()
         .then((results) => {
           const taskExists = results.some(
